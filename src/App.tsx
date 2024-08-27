@@ -64,7 +64,7 @@ export function App() {
             console.log(newValue)
             if (newValue === null) {
               return
-            } else if (newValue.id == "") {
+            } else if (newValue.id === "") {
               await loadAllTransactions()
               return
             }
