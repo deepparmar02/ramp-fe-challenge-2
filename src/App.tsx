@@ -62,7 +62,6 @@ export function App() {
             label: `${item.firstName} ${item.lastName}`,
           })}
           onChange={async (newValue) => {
-            console.log(newValue)
             if (newValue === null) {
               return
             } else if (newValue.id === "") {
@@ -78,14 +77,10 @@ export function App() {
         <div className="RampGrid">
           <Transactions transactions={transactions} />
 
-          {transactions !== null && (
+          {transactions !== null && paginatedTransactions !== null && (
             <button
               className="RampButton"
-              disabled={
-                paginatedTransactionsUtils.loading ||
-                paginatedTransactions?.nextPage == null ||
-                transactionsByEmployee?.length === 0
-              }
+              disabled={paginatedTransactionsUtils.loading}
               onClick={async () => {
                 await loadAllTransactions()
               }}
